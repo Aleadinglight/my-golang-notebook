@@ -42,3 +42,26 @@ Important Concepts
   - If the higher function cannot handle that `panic`, then the `panic` can be rethrow again, propagate the error up the call stack.
 
 ### Important concepts and syntax
+
+1. Pointer
+  - Store the address of a memory location.
+  - Uninitilized pointer is assigned a `nil` value.
+  - Syntactic sugar: no need to deference to get the field of a pointer. 
+  - All assigment operation in Go are copy operation except for `array` and `map` because they contain internal pointers. When sharing `array` or `map`, you share a pointer point to the underlying data.
+
+2. Function 
+  - Can return pointer. (Unlike C++ where heap and stack is important to keep in mind).
+  - Can declare the return variable.
+  - Can return multiple value.
+  - Can return an `error` object for checking purposes.
+  - Can be treated as type (anonymous function - first class function).
+
+### Question
+  1. First class function: a language that support first class function allows function to be assign to variables, pass as arguments to other functions and returned from other functions. Go has support for first class function.
+
+  2. Anynomous fuction: function that is assigned to a variable and does not have a name. The only way to call the function is by calling the variable that it assigned to, or to call it immediately right after created.
+
+  3. Closure: a special case of anonymous function that access variable defined outside of its body.
+
+  4. Higher-other function: a function that takes one or more functions as arguments, or a function that return a function as its result.
+
