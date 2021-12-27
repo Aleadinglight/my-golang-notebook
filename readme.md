@@ -6,7 +6,7 @@ Important Concepts
 0. Varable
   - The inner scope variable is stronger than the ourter scope (shadowing)
 
-1.Maps 
+1. Maps 
   - Collections of value types that are accesssed via keys
   - Created via literals or via `make` function
   - Accessed via `[key]` syntax
@@ -50,7 +50,7 @@ Important Concepts
   - All assigment operation in Go are copy operation except for `array` and `map` because they contain internal pointers. When sharing `array` or `map`, you share a pointer point to the underlying data.
 
 2. Function 
-  - Can return pointer. (Unlike C++ where heap and stack is important to keep in mind).
+  - Can return pointer. (Unlike C++ where heap and stack is important to keep in mind). The returned address automatically promoted from local memory (stack) to shared memory (heap).
   - Can declare the return variable.
   - Can return multiple value.
   - Can return an `error` object for checking purposes.
