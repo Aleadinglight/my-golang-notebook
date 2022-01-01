@@ -2,7 +2,7 @@ My Golang Notes
 
 # My Golang Notes  
 My personal notes on the Go programming language.
-### Getting Started
+## Getting Started
 
 - Enable dependency tracking. 
 	```bash
@@ -25,10 +25,23 @@ My personal notes on the Go programming language.
 	Hello World
 	```
 
-### Basic concept and syntax
+## Basic concept and syntax
 
-0. Varable
-  - The inner scope variable is stronger than the ourter scope (shadowing)
+### Variables
+```go
+	// Manually declare the variable
+	var a int
+	// Declaring multible variables and let Go infer the types
+	var b, c = 1, 2
+	// Short hand for declaring and initializing a variable
+	d := true
+
+	// Normal output
+	fmt.Println("b =", b, "and c =", c)
+	// Formatted output
+	fmt.Printf("a = %v (%T) and d = %v (%T)", a, a, d, d)
+```
+- The inner scope variable is stronger than the ourter scope (shadowing)
 
 1. Maps 
   - Collections of value types that are accesssed via keys
