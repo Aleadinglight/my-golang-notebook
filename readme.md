@@ -1,5 +1,29 @@
-Important Concepts
+My Golang Notes
 
+# My Golang Notes  
+My personal notes on the Go programming language.
+### Getting Started
+
+- Enable dependency tracking. 
+	```bash
+	$ go mod init golang-note
+	```
+	This will create a **go.mod** file which contains description of our **project** and its **go version**. 
+	
+- Added the file [helloworld.go](../blob/main/basic/helloworld.go)
+- Add new module requirements
+	```bash
+	$ go mod tiny
+	go: finding module for package rsc.io/quote
+	go: found rsc.io/quote in rsc.io/quote v1.5.2
+	```
+	This will also create a **go.sum** file for authenticating the module.
+	
+- Run the program
+	```bash
+	$ go run ./basic/helloworld.go
+	Hello World
+	```
 
 ### Basic concept and syntax
 
