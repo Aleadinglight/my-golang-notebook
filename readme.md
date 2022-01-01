@@ -10,7 +10,7 @@ My personal notes on the Go programming language.
 	```
 	This will create a **go.mod** file which contains description of our **project** and its **go version**. 
 	
-- Added the file [helloworld.go](../blob/main/basic/helloworld.go)
+- Added the file [helloworld.go](basic/helloworld.go)
 - Add new module requirements
 	```bash
 	$ go mod tiny
@@ -42,6 +42,15 @@ My personal notes on the Go programming language.
 	fmt.Printf("a = %v (%T) and d = %v (%T)", a, a, d, d)
 ```
 - The inner scope variable is stronger than the ourter scope (shadowing)
+
+### User Input
+```go
+	var  n  int
+	fmt.Println("Input n")
+	fmt.Scan(&n)
+	fmt.Println("n = ", n)
+```
+- Refer to [input.go](basic/input.go)
 
 ### Maps
 ```go
