@@ -43,12 +43,32 @@ My personal notes on the Go programming language.
 ```
 - The inner scope variable is stronger than the ourter scope (shadowing)
 
-1. Maps 
-  - Collections of value types that are accesssed via keys
-  - Created via literals or via `make` function
-  - Accessed via `[key]` syntax
-  - Check for present with `value, ok = map[key]` 
-  - Map are reference type
+### Maps
+```go
+	// Use make keyword
+	m := make(map[string]int)
+
+	// Update values via keys
+	m["Alice"] = 1
+	m["Bob"] = 2
+
+	// Delete value for a specific key
+	delete(m, "Alice")
+
+	// Check if a value exist
+	_, ok := m["Bob"]
+	if ok {
+		// do something
+	}
+
+	// Get the number of key/value pairs
+	fmt.Println("len: ", len(m))
+```
+- Collections of value types that are accesssed via keys
+- Created via literals or via `make` function
+- Accessed via `[key]` syntax
+- Check for present with a second variable `_, ok = map[key]`
+- Map are reference type
 
 2. Structs
   - Collections of disparate data types that describe a single concept
