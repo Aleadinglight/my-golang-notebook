@@ -1,6 +1,19 @@
 # My Golang Notes  
 My personal notes on the Go programming language.
-## Getting Started
+
+## Table of Contents 
+
+[Getting Started](#start)
+
+[Basic Concepts](#basic)
+
+[Control Flow](#control)
+
+[Important Concepts](#important)
+
+[Question note](#question)
+
+## Getting Started <a id="start"/>
 
 - Enable dependency tracking. 
 	```bash
@@ -23,7 +36,7 @@ My personal notes on the Go programming language.
 	Hello World
 	```
 
-## Basic concept and syntax
+## Basic Concepts <a id="basic"/>
 
 ### Variables
 ```go
@@ -134,7 +147,7 @@ My personal notes on the Go programming language.
 	}
 ```
 
-## Control flow 
+## Control flow <a id="control"/>
 
 ### Defer
   - Delay the execution of a statement until function exits. Last in first out. Helpful when you need to open/close a resource (I/O socket) in the same block of code.
@@ -150,7 +163,7 @@ My personal notes on the Go programming language.
   - Current function will not attempt to continue, but the higher function in call stack will.
   - If the higher function cannot handle that `panic`, then the `panic` can be rethrow again, propagate the error up the call stack.
 
-## Important concepts and syntax
+## Important Concepts <a id="important"/>
 
 ### Pointer
   - Store the address of a memory location.
@@ -165,7 +178,7 @@ My personal notes on the Go programming language.
   - Can return an `error` object for checking purposes.
   - Can be treated as type (anonymous function - first class function).
 
-## Question
+## Question <a id="question"/>
   - First class function: a language that support first class function allows function to be assign to variables, pass as arguments to other functions and returned from other functions. Go has support for first class function.
 
   - Anynomous fuction: function that is assigned to a variable and does not have a name. The only way to call the function is by calling the variable that it assigned to, or to call it immediately right after created.
