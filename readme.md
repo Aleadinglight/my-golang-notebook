@@ -1,5 +1,3 @@
-My Golang Notes
-
 # My Golang Notes  
 My personal notes on the Go programming language.
 ## Getting Started
