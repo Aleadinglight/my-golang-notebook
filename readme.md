@@ -77,19 +77,64 @@ My personal notes on the Go programming language.
 - Check for present with a second variable `_, ok = map[key]`
 - Map are reference type
 
-2. Structs
-  - Collections of disparate data types that describe a single concept
-  - Keyed by named fields
-  - Anonymous structs are allowed
-  - No inheritance, but can use composition via embedding
-  - Tags can be added to struct fields to describe field
+### Struct
+```go
+	type person struct {
+		age int
+		name string
+	}
+	
+	func main() {
+		p:= person {
+			name: "Bob",
+			age: 20
+		}
+		fmt.Println(p)
+	}
+```
 
-3. If statement
-  - Has it own initializer block
-  - Short circuiting: the if statement does not execute the unecessary statement.
-  - Make some error 
+- Collections of disparate data types that describe a single concept
+- Keyed by named fields
+- Anonymous structs are allowed
+- No inheritance, but can use composition via embedding
+- Tags can be added to struct fields to describe field
 
-### Control flow 
+### If Statement
+```go 
+	peopleAge := map[string]int{
+		"Trung Duong": 23,
+		"Janie":       21,
+	}
+
+	// Initialize p, ok before entering the check
+	if p, ok := peopleAge["Janie"]; ok {
+		fmt.Println(p)
+	} else { // Else need to be on the same line of the closed curly brace
+		fmt.Println("Janie not found!")
+	}
+```
+
+- Has it own initializer block
+- `if` statement does not execute the unnecessary statement (short circuiting).
+- Equality with `float` need to be check differently using own defined `error()` function
+```go
+	n := 0.5
+	// Failed due to floating point
+	if math.Pow(math.Sqrt(n), 2) == n {
+		fmt.Println("true")
+	} else {
+		fmt.Println("false")
+	}
+
+	// Use a custom checking
+	if math.Pow(math.Sqrt(n), 2)-n < 0.00001 {
+		fmt.Println("true")
+	} else {
+		fmt.Println("false")
+	}
+```
+
+## Control flow 
 
 1. Defer
   - Delay the execution of a statement until function exits. Last in first out. Helpful when you need to open/close a resource (I/O socket) in the same block of code.
