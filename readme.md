@@ -158,8 +158,8 @@ My personal notes on the Go programming language.
 Output
 ```
 >>> End
-		Middle 
-		Start
+	Middle 
+	Start
 ```
 - Delay the execution of a statement until function exits.  Helpful when you need to open/close a resource (I/O socket) in the same block of code.
 - Last in first out (LIFO)
@@ -187,11 +187,11 @@ Output
 Output 
 ```go
 >>> Start
-		First defer panic: Panic!
+	First defer panic: Panic!
 
-		goroutine 1 [running]:
-		main.main()
-			/tmp/sandbox2732711579/prog.go:12 +0xb5
+	goroutine 1 [running]:
+	main.main()
+		/tmp/sandbox2732711579/prog.go:12 +0xb5
 ```
 - Act as run-time error. Panic is used when an application get into a state that it cannot recover from. Call `panic(error)` as a way to `throw(error)`.
 - No longer execute the rest of that function. But will still fire defer function (only for `defer` before `panic`).
@@ -222,9 +222,9 @@ func main() {
 Output 
 ```go
 >>> Start
-		About to panic 
-		2009/11/10 23:00:00 Error:  Panic! 
-		End
+	About to panic 
+	2009/11/10 23:00:00 Error:  Panic! 
+	End
 ```
 - Used to recover to normal flow from `panic`.
 - Because `panic` doesn't execute the rest of the function, the only place to use `recover` is inside a `defer`.
