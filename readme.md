@@ -150,18 +150,86 @@ My personal notes on the Go programming language.
 ## Control flow <a id="control"/>
 
 ### Defer
-  - Delay the execution of a statement until function exits. Last in first out. Helpful when you need to open/close a resource (I/O socket) in the same block of code.
-  - Defer statement is evaluated at time defer is executed, not at time of called function execution. For changing value of defer function  multiple times, the value is evaluate at the time the defer is called.
+```go 
+	defer fmt.Println("Start")
+	defer fmt.Println("Middle")
+	fmt.Println("End")
+```
+Output
+```
+>>> End
+		Middle 
+		Start
+```
+- Delay the execution of a statement until function exits.  Helpful when you need to open/close a resource (I/O socket) in the same block of code.
+- Last in first out (LIFO)
+- Defer statement is evaluated at time defer is executed, not at time of called function execution. For changing value of defer function multiple times, the value is evaluate at the time the defer is called.
+```go
+	a := "Janie"
+	defer fmt.Println(a) 
+	a := "Minxy"
+```
+Output
+```
+>>>	Janie
+```
 
-### Panic 
-  - Act as run-time error. Panic is used when an application get into a state that it cannot recover from. Call `panic(error)` as a way to `throw(error)`.
-  - No longer execute the rest of that function. But will still fire defer function.
+### Panic
+```go 
+	fmt.Println("Start")
+	// defer before panic
+	defer fmt.Println("First defer")
+	panic("Panic!")
+	// defer after panic
+	defer fmt.Println("Second defer")
+	fmt.Println("End")
+```
+Output 
+```go
+>>> Start
+		First defer panic: Panic!
+
+		goroutine 1 [running]:
+		main.main()
+			/tmp/sandbox2732711579/prog.go:12 +0xb5
+```
+- Act as run-time error. Panic is used when an application get into a state that it cannot recover from. Call `panic(error)` as a way to `throw(error)`.
+- No longer execute the rest of that function. But will still fire defer function (only for `defer` before `panic`).
 
 ### Recover
-  - Used to recover from panic.
-  - Because `panic` doesn't execute the rest of the function, the only place to use `recover` is inside a `defer`. 
-  - Current function will not attempt to continue, but the higher function in call stack will.
-  - If the higher function cannot handle that `panic`, then the `panic` can be rethrow again, propagate the error up the call stack.
+```go
+func panicker() {
+	fmt.Println("About to panic")
+	defer func() {
+		// Call recover() to return to normal flow
+		// This will get the panic message and print it out
+		if err := recover(); err != nil {
+			log.Println("Error: ", err)
+		}
+	}()
+	panic("Panic!")
+	// This will not be called
+	fmt.Println("Done panicking")
+}
+
+func main() {
+	fmt.Println("Start")
+	// Panic and recover
+	panicker()
+	fmt.Println("End")
+}
+```
+Output 
+```go
+>>> Start
+		About to panic 
+		2009/11/10 23:00:00 Error:  Panic! 
+		End
+```
+- Used to recover to normal flow from `panic`.
+- Because `panic` doesn't execute the rest of the function, the only place to use `recover` is inside a `defer`.
+- Current function will not attempt to continue, but the higher function in call stack will. Because the current function is no longer reliable to continue anymore after the `panic` is called.
+- If the higher function cannot handle that `panic`, then the `panic` can be rethrow again, propagate the error up the call stack
 
 ## Important Concepts <a id="important"/>
 
